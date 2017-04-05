@@ -10,8 +10,8 @@ window.renderStatistics = function (ctx, names, times) { /* window - объек�
   ctx.fillText('Ура, вы победили!', 120, 40);
   ctx.fillText('Список результатов:', 120, 55);
   var max = -1;
-  for (var i = 0; i < times.length; i++) { /* количество результатов времени*/
-    var time = times[i];
+  for (var j = 0; j < times.length; j++) { /* количество результатов времени*/
+    var time = times[j];
     if (time > max) {
       max = time;
     }
@@ -23,14 +23,14 @@ window.renderStatistics = function (ctx, names, times) { /* window - объек�
   for (var i = 0; i < times.length; i++) {
     ctx.font = '16px PT Mono';
     if (names[i] !== 'Вы') {
-      var grad = function (min, maximum) { 
+      /*var grad = function (min, maximum) {
         return	Math.random() * (maximum - min) + min;
-      };
-      //alert(grad(0, 1));	
+      };*/
+		//alert(grad(0, 1));
       var gradient = ctx.createLinearGradient(0, 0, 300, 150);
       gradient.addColorStop(0, 'rgba(0, 0, 255, 0)');
-      gradient.addColorStop(1, 'rgba(0, 0, 255, 0.7)'); // 'rgba(0, 0, 255, '+grad+')' - не работает
-      ctx.fillStyle = gradient; 
+      gradient.addColorStop(1, 'rgba(0, 0, 255, 0.7');/*'rgba(0, 0, 255, 'grad(0,1)')' - не работает*/
+      ctx.fillStyle = gradient;
     } else {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     }
