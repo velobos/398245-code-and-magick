@@ -18,20 +18,26 @@ window.renderStatistics = function (ctx, names, times) { /* window - объек�
   }
   var histogramHeight = 150;
   var step = histogramHeight / max;
-  //ctx.textBaseline = 'top'; // Рисуем надпись от левого верхнего угла
+  ctx.textBaseline = 'top'; // Рисуем надпись от левого верхнего угла
+
   for (var i = 0; i < times.length; i++) {
     ctx.font = '16px PT Mono';
     if (names[i] !== 'Вы') {
-      var gradient = ctx.createLinearGradient(32, 17, 240, 1);
-      gradient.addColorStop(0, 'rgba(32, 17, 240, 1)');	
-      gradient.addColorStop(1, 'rgba(42, 80, 140, 1)');
-      ctx.fillStyle = gradient;
+      var grad = function (min, maximum) { 
+        return	Math.random() * (maximum - min) + min;
+      };
+      //alert(grad(0, 1));	
+      var gradient = ctx.createLinearGradient(0, 0, 300, 150);
+      gradient.addColorStop(0, 'rgba(0, 0, 255, 0)');
+      gradient.addColorStop(1, 'rgba(0, 0, 255, 0.7)'); // 'rgba(0, 0, 255, '+grad+')' - не работает
+      ctx.fillStyle = gradient; 
     } else {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     }
-    ctx.fillRect(130 + 100 * i, 100, 40, times[i] * step);
+    ctx.fillRect(130 + 100 * i, 250, 40, times[i] * -1 * step);
     ctx.fillStyle = 'black';
     ctx.fillText(names[i], 130 + 100 * i, 260);
     ctx.fillText(times[i].toFixed(0), 130 + 100 * i, 80);
   }
 };
+
