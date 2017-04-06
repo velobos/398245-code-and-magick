@@ -65,6 +65,8 @@
     <img src="./img/user-1.jpg" class="setup-open-icon">
   </div>
 </header>
+	
+<canvas id="canvas"></canvas>
 
 <div class="overlay setup hidden">
   <form class="setup-wizard-form">
@@ -179,24 +181,30 @@
             return 2;
           }
       }
-    var getFireballSpeed=Wind;
-    var wizardSpeed=3;
-    var wizardWidth=70;
-    var getWizardHeight;
-    
+    var getFireballSpeed = Wind;
+    var wizardSpeed = 3;
+    var wizardWidth = 70;
+/*Пропорциональная высота мага*/  
+	var getWizardHeight = function () {
+		wizardHeight = 1.337 * wizardWidth;
+		return wizardHeight;
+	}
+	     
     function getWizardX (width) {
-      return width/2;
+      return width/2 - (wizardWidth/2);
     }
     function getWizardY (height) {
       return height/3;
     } 
-    
-    
-    
+/*canvas*/
+	
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+      
   </script>
-  <script src="js/game.js">
-  <script type="text/javascript" src="js/stat.js"></script>
-  </script>
-  
+  <script src="js/game.js"></script>
+  <script src="js/stat.js"></script>
+
+		
 </body>
 </html>
